@@ -7,7 +7,7 @@ const Employee=(props)=>
     
     return(
 
-        <div key={props._id} style= {{border:"1px solid black"}}>
+        <div key={props._id} style= {{border:"2px solid black"}}>
        
             <h4>Id: {props._id}</h4>
             <p>Name: {props.name}</p>
