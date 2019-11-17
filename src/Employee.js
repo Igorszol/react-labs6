@@ -7,9 +7,9 @@ const Employee=(props)=>
     
     return(
 
-        <div key={props._id} style= {{border:"2px solid black"}}>
+        <div key={props.id} style= {{border:"2px solid black"}}>
        
-            <h4>Id: {props._id}</h4>
+            <h4>Id: {props.id}</h4>
             <p>Name: {props.name}</p>
             <p>Age: {props.age}</p>
             <p>Company: {props.company}</p>
