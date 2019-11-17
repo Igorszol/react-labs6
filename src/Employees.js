@@ -10,10 +10,12 @@ class Employees extends React.Component {
       this.state = {
         employees: [],
         isLoading: true,
-        isSaving:false
+        isSaving:false,
+        isDeleting:false
       }
       this.fetchData=this.fetchData.bind(this);
       this.saveData=this.saveData.bind(this);
+      this.deleteEmp=this.deleteEmp.bind(this);
     }
   
     fetchData()
@@ -25,7 +27,8 @@ class Employees extends React.Component {
           this.setState({
             employees: resp,
             isloading: false,
-            isSaving: false
+            isSaving: false,
+            idDeleting: false
           })
         })
     }
@@ -51,15 +54,45 @@ class Employees extends React.Component {
     }).then(() => {
       this.fetchData();
   });
-    
-  }
+}
+  deleteEmp(id) {
+    this.setState({isDeleting: true});
+    fetch('http://localhost:3000/employees/' + id, {
+        method: 'DELETE'
+    }).then(() => {
+        this.fetchData();
+    });
+}
+
+
+
+  
 
     render() {
       return(
 
         <div>
           {this.state.isSaving ? <p>Saving...</p> : <AddForm submitClicked={this.saveData}/>}
-          {this.state.isloading ? <p>Loading...</p> : <div>{this.state.employees.map(Employee)}</div>}
+          {this.state.isloading ? <p>Loading...</p> : 
+         
+          <div>
+            {this.state.employees.map(employee =>{
+            return(
+            
+            <div key={employee.id} style= {{border:"2px solid black"}}>
+       
+             <h4>Id: {employee.id}</h4>
+            <p>Name: {employee.name}</p>
+            <p>Age: {employee.age}</p>
+            <p>Company: {employee.company}</p>
+            <p>Email: {employee.email}</p>
+            <p>IsActive: {employee.isActive.toString()}</p>
+           <button onClick={()=>this.deleteEmp(employee.id)}>Delete</button>
+
+           </div>
+        )}
+        )}
+        </div>}
         </div>
       
        

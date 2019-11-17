@@ -2,21 +2,30 @@ import React from 'react'
 
 
 
-const Employee=(props)=>
+class Employee extends React.Component
 {
-    
-    return(
+    constructor(props) {
+        super(props);
+    }
+    render()
+    {
 
-        <div key={props.id} style= {{border:"2px solid black"}}>
+        return(
+            
+            <div style= {{border:"2px solid black"}}>
        
-            <h4>Id: {props.id}</h4>
+             <h4>Id: {props.id}</h4>
             <p>Name: {props.name}</p>
             <p>Age: {props.age}</p>
             <p>Company: {props.company}</p>
             <p>Email: {props.email}</p>
             <p>IsActive: {props.isActive.toString()}</p>
+           
+            
+           
         </div>
         )
+    }
     
 }
 
