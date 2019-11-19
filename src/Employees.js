@@ -21,7 +21,7 @@ class Employees extends React.Component {
     fetchData()
     {
       this.setState({isloading: true});
-    fetch("http://localhost:3000/employees")
+    fetch("http://localhost:3001/employees")
     .then(resp => resp.json())
         .then(resp => {
           this.setState({
@@ -38,7 +38,7 @@ class Employees extends React.Component {
 }
   saveData(name, age, company, email, isActive){
     this.setState({isSaving: true});
-    fetch('http://localhost:3000/employees', {
+    fetch('http://localhost:3001/employees', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ class Employees extends React.Component {
 }
   deleteEmp(id) {
     this.setState({isDeleting: true});
-    fetch('http://localhost:3000/employees/' + id, {
+    fetch('http://localhost:3001/employees/' + id, {
         method: 'DELETE'
     }).then(() => {
         this.fetchData();
@@ -76,22 +76,9 @@ class Employees extends React.Component {
           {this.state.isloading ? <p>Loading...</p> : 
          
           <div>
-            {this.state.employees.map(employee =>{
-            return(
-            
-            <div key={employee.id} style= {{border:"2px solid black"}}>
-       
-             <h4>Id: {employee.id}</h4>
-            <p>Name: {employee.name}</p>
-            <p>Age: {employee.age}</p>
-            <p>Company: {employee.company}</p>
-            <p>Email: {employee.email}</p>
-            <p>IsActive: {employee.isActive.toString()}</p>
-           <button onClick={()=>this.deleteEmp(employee.id)}>Delete</button>
-
-           </div>
-        )}
-        )}
+            {this.state.employees.map(employee =>
+                        <Employee key={employee.id} emp={employee} delete={this.deleteEmp}/>)}
+      
         </div>}
         </div>
       
