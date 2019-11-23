@@ -1,30 +1,6 @@
 {
   "employees": [
     {
-      "id": "5dc9bdc69ba84395b4ca5705",
-      "isActive": true,
-      "age": 39,
-      "name": "Lindsey Cabrera",
-      "company": "GAPTEC",
-      "email": "lindseycabrera@gaptec.com"
-    },
-    {
-      "id": "5dc9bdc6fb9ede50b4c65fed",
-      "isActive": true,
-      "age": 21,
-      "name": "Ross Dickerson",
-      "company": "PROXSOFT",
-      "email": "rossdickerson@proxsoft.com"
-    },
-    {
-      "id": "5dc9bdc6485ccfcec093eb67",
-      "isActive": false,
-      "age": 25,
-      "name": "Mcdonald Hubbard",
-      "company": "PAPRICUT",
-      "email": "mcdonaldhubbard@papricut.com"
-    },
-    {
       "id": "5dc9bdc6d54eb99cb821fb5f",
       "isActive": false,
       "age": 24,

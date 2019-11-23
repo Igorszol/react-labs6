@@ -77,7 +77,7 @@ class Employees extends React.Component {
          
           <div>
             {this.state.employees.map(employee =>
-                        <Employee key={employee.id} emp={employee} delete={this.deleteEmp}/>)}
+                        <Employee key={employee.id} employee={employee} delete={this.deleteEmp}/>)}
       
         </div>}
         </div>

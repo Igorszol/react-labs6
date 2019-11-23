@@ -13,41 +13,19 @@ class Employee extends React.Component {
 
     render() {
         return (
-            <table style={{ border: "2px solid black"}}>
+            <div style= {{border:"2px solid black"}}>
+            {this.state.isDeleting ? <div>Deleting...</div>:<div>
+            <h4>Id: {this.props.employee.id}</h4>	             
+            <p>Name: {this.props.employee.name}</p>	       
+            <p>Age: {this.props.employee.age}</p>	            
+            <p>Company: {this.props.employee.company}</p>	            
+            <p>Email: {this.props.employee.email}</p>	          
+            <p>IsActive: {this.props.employee.isActive.toString()}</p>	         
+
+            <button onClick={() => {this.props.delete(this.props.employee.id);this.setState({isDeleting: true})}}>Delete</button>
+            </div>}
+            </div>
                
-            {this.state.isDeleting ? <tbody> <tr><td>Deleting...</td></tr>  </tbody>: 
-            <tbody>
-                    <tr>
-                        <td>Name: </td>
-                        <td>{this.props.emp.name}</td>
-                    </tr>
-                    <tr>
-                        <td>Comapny:</td>
-                        <td>{this.props.emp.company}</td>
-                    </tr>
-                    <tr>
-                        <td>Age:</td>
-                        <td>{this.props.emp.age}</td>
-                    </tr>
-                    <tr>
-                        <td>Email:</td>
-                        <td>{this.props.emp.email}</td>
-                    </tr>
-                    <tr>
-                        <td>IsActive:</td>
-                        <td>{this.props.emp.isActive.toString()}</td>
-                    </tr>
-
-
-                    <tr>
-                        <td>
-                            <button onClick={() => {this.props.delete(this.props.emp.id);this.setState({isDeleting: true})}}>Delete</button>
-                        </td>
-                    </tr>
-    
-                </tbody>}
-           
-            </table>
         )
     }
 }
