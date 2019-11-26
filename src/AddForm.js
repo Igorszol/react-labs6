@@ -13,8 +13,7 @@ class AddForm extends React.Component
           isActive: false,
             isVisible: false
           }
-          this.handleAddVisible=this.handleAddVisible.bind(this);
-          this.handleAddInvisible=this.handleAddInvisible.bind(this);
+      
           this.nameChanged = this.nameChanged.bind(this);
         this.ageChanged = this.ageChanged.bind(this);
         this.companyChanged = this.companyChanged.bind(this);
@@ -22,20 +21,6 @@ class AddForm extends React.Component
         this.isActiveChanged = this.isActiveChanged.bind(this);
 
         }
-
-    handleAddVisible (event) {
-        this.setState({
-          name: "",
-          age: "",
-          company: "",
-          email: "",
-          isActive: false,
-            isVisible: true
-        });
-      }
-      handleAddInvisible (event) {
-        this.setState({isVisible: false});
-      }
 
       nameChanged(event) {
         this.setState({ name:event.target.value });
@@ -63,10 +48,9 @@ class AddForm extends React.Component
     render(){
         return(
           <div style= {{border:"2px solid black"}}>
-          {this.state.isSaving ? <p>Saving...</p> :
           <div>
-            <button onClick={this.handleAddVisible}>Add Employee</button>
-            {this.state.isVisible ?  
+           
+             
             <form>
                 <p>ID: <input disabled></input></p>
                 <p>Name: <input name="name" type="text" value={this.state.name} onChange={this.nameChanged}></input></p>
@@ -76,9 +60,9 @@ class AddForm extends React.Component
                 <p>IsActive: <input name="isActive" type="checkbox" defaultChecked={this.state.isActive} onChange={this.isActiveChanged}></input></p>
                 
                 <button onClick={() => this.props.submitClicked(this.state.name,this.state.age,this.state.company,this.state.email,this.state.isActive)}>Add</button>
-                <button onClick={this.handleAddInvisible}>Cancel</button>
-            </form>:null}
-         </div>}
+                <button >Cancel</button>
+            </form>
+         </div>
             </div>
         )}
 

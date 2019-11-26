@@ -1,14 +1,6 @@
 {
   "employees": [
     {
-      "id": "5dc9bdc6d54eb99cb821fb5f",
-      "isActive": false,
-      "age": 24,
-      "name": "Joyce West",
-      "company": "FANFARE",
-      "email": "joycewest@fanfare.com"
-    },
-    {
       "id": "5dc9bdc64424815d04e10c50",
       "isActive": true,
       "age": 27,

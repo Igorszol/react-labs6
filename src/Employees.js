@@ -72,9 +72,8 @@ class Employees extends React.Component {
       return(
 
         <div>
-          {this.state.isSaving ? <p>Saving...</p> : <AddForm submitClicked={this.saveData}/>}
+          
           {this.state.isloading ? <p>Loading...</p> : 
-         
           <div>
             {this.state.employees.map(employee =>
                         <Employee key={employee.id} employee={employee} delete={this.deleteEmp}/>)}
