@@ -1,5 +1,12 @@
 import React from "react";
 
+import{
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 class AddForm extends React.Component
 {
     constructor(props)
@@ -19,7 +26,7 @@ class AddForm extends React.Component
         this.companyChanged = this.companyChanged.bind(this);
         this.emailChanged = this.emailChanged.bind(this);
         this.isActiveChanged = this.isActiveChanged.bind(this);
-
+        this.saveData=this.saveData.bind(this);
         }
 
       nameChanged(event) {
@@ -42,8 +49,23 @@ class AddForm extends React.Component
         this.setState({ isActive:event.target.value });
     }
 
-
-
+    saveData(name, age, company, email, isActive){
+      this.setState({isSaving: true});
+      fetch('http://localhost:3001/employees', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            isActive: isActive,
+            age: age,
+            name: name,
+            company: company,
+            email: email
+   
+        })
+      });
+  }
 
     render(){
         return(
@@ -59,8 +81,13 @@ class AddForm extends React.Component
                 <p>Email: <input name="email" type="text" value={this.state.email} onChange={this.emailChanged}></input></p>
                 <p>IsActive: <input name="isActive" type="checkbox" defaultChecked={this.state.isActive} onChange={this.isActiveChanged}></input></p>
                 
-                <button onClick={() => this.props.submitClicked(this.state.name,this.state.age,this.state.company,this.state.email,this.state.isActive)}>Add</button>
-                <button >Cancel</button>
+                <Link to="/">
+                <button onClick={()=>this.saveData(this.state.name,this.state.age,this.state.company,this.state.email,this.state.isActive)}>Add</button>
+          </Link>
+                
+                <Link to="/">
+          <button>Cancel</button>
+          </Link>
             </form>
          </div>
             </div>

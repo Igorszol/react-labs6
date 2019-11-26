@@ -15,6 +15,11 @@ const App = () => (
     <Switch>
       <Route exact path="/">
         <PageEmployeeList></PageEmployeeList>
+        <Link to="/new">
+          <button>
+          Create new employee
+          </button>
+          </Link>
       </Route>
       <Route path="/new">
         <PageEmployee></PageEmployee>

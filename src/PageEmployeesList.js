@@ -7,9 +7,11 @@ class PageEmployeeList extends React.Component {
     render() {
         return(
 
-    <Employees/>    
-        
-                    )}
-        }
+
+    <Employees/>  
+ 
+
+      )}
+}
 
   export default PageEmployeeList
