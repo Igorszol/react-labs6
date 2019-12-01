@@ -3,7 +3,7 @@ import React from "react";
 import{
   BrowserRouter as Router,
   Switch,
-  Route,
+  withRouter,
   Link
 } from "react-router-dom";
 
@@ -49,7 +49,8 @@ class AddForm extends React.Component
         this.setState({ isActive:event.target.value });
     }
 
-    saveData(name, age, company, email, isActive){
+    saveData(name, age, company, email, isActive,e){
+      e.preventDefault();
       this.setState({isSaving: true});
       fetch('http://localhost:3001/employees', {
         method: 'POST',
@@ -63,8 +64,13 @@ class AddForm extends React.Component
             company: company,
             email: email
    
-        })
-      });
+          })
+        }).then(()=>
+        {
+         
+         this.props.history.push('/');
+        
+        });
   }
 
     render(){
@@ -81,9 +87,9 @@ class AddForm extends React.Component
                 <p>Email: <input name="email" type="text" value={this.state.email} onChange={this.emailChanged}></input></p>
                 <p>IsActive: <input name="isActive" type="checkbox" defaultChecked={this.state.isActive} onChange={this.isActiveChanged}></input></p>
                 
-                <Link to="/">
-                <button onClick={()=>this.saveData(this.state.name,this.state.age,this.state.company,this.state.email,this.state.isActive)}>Add</button>
-          </Link>
+                
+                <button onClick={(e)=>this.saveData(this.state.name,this.state.age,this.state.company,this.state.email,this.state.isActive,e)}>Add</button>
+         
                 
                 <Link to="/">
           <button>Cancel</button>
@@ -94,4 +100,4 @@ class AddForm extends React.Component
         )}
 
 }
-export default AddForm; 
+export default withRouter(AddForm); 
